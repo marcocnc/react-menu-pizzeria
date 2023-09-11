@@ -47,11 +47,12 @@ class App extends Component{
 
     // Increment number
     cards[id].quantity++;
+    console.log(cards[id].quantity);
     this.setState({cards})
   }
 
 
-  // Function tforreset counter
+  // Function for reset counter
   handleReset = card =>{
     const cards = [...this.state.cards];
     const id = cards.indexOf(card);
@@ -60,7 +61,9 @@ class App extends Component{
     this.setState({cards})
   }
 
+  
 
+// Interface Code
   render(){
     return (
       <>
@@ -71,7 +74,7 @@ class App extends Component{
             <h1>Cosa desideri ordinare?</h1>
             <hr />
     
-          {/* Cards row */}
+            {/* Cards row */}
             <div className='row'>
               {this.state.cards.map(card =>(
 
@@ -91,6 +94,7 @@ class App extends Component{
                 card = {card}/>
               ))}
 
+              <button onClick={this.handleShowOrder} className="btn btn-primary w-100 mt-2 mb-5">Conferma</button>
 
             </div>
           </div>
