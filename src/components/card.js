@@ -15,7 +15,7 @@ class Card extends Component{
                     </div>
                     <div>
                         <button onClick={()=>this.props.onIncrement(this.props.card)} className="btn btn-primary w-50">Aggiungi <span className="badge badge-light">( {this.props.card.quantity} )</span></button>
-                        <button onClick={()=>this.props.onIncrement(this.props.card)} className="btn btn-warning w-50">Annulla</button>
+                        <button onClick={()=>this.props.onReset(this.props.card)} className="btn btn-warning w-50">Annulla</button>
                     </div>
                 </div>
             </div>

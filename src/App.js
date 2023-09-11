@@ -30,21 +30,35 @@ class App extends Component{
   }
 
 
-  // Function to delete a card
+  // Function for delete a card
   handleDelete = cardId => {
     const cards = this.state.cards.filter(card => card.id !== cardId);
     this.setState({cards});
   }
 
-  // Function to add quantity of pizzas
+  // Function for add quantity of pizzas
   handleIncrement = card => {
+    // Copy the original object
     const cards = [...this.state.cards];
+
+    // Take the ID of card and saved in a constant
     const id = cards.indexOf(card);
     cards[id] = {...card};
+
+    // Increment number
     cards[id].quantity++;
     this.setState({cards})
   }
 
+
+  // Function tforreset counter
+  handleReset = card =>{
+    const cards = [...this.state.cards];
+    const id = cards.indexOf(card);
+    cards[id] = {...card};
+    cards[id].quantity = 0;
+    this.setState({cards})
+  }
 
 
   render(){
