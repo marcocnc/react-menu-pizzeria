@@ -29,7 +29,7 @@ class App extends Component{
     ]
   }
 
-
+  
   // Function for delete a card
   handleDelete = cardId => {
     const cards = this.state.cards.filter(card => card.id !== cardId);
@@ -75,21 +75,41 @@ class App extends Component{
     this.setState({cards})
   }
   
+  // Function for reset all counters
   handleResetAll = () => {
 
     // Remap original array
-    const updatedCards = this.state.cards.map(card =>{
+    const updatedPizzas = this.state.cards.map(card => {
 
       // Original array
-      const updatedCard = {...card};
+      const updatedPizza = {...card};
       
       // Reset to zero all quantities
-      updatedCard.quantity = 0;
-      return updatedCard;
+      updatedPizza.quantity = 0;
+      return updatedPizza;
     })
   
    
-    this.setState({ cards: updatedCards });
+    this.setState({ cards: updatedPizzas });
+  }
+
+
+  // Function for see selected pizzas
+  handleShowOrder = () => {
+
+    // Filtered pizzas if quantity > 0
+    const selectedPizzas = this.state.cards.filter(pizza => pizza.quantity > 0);
+    console.warn(selectedPizzas);
+
+    let report = 'Pizze: ';
+    let quantity = 'Quantità: '
+
+    selectedPizzas.forEach((pizza) => {
+      report += `${pizza.pizzaName}`;
+      quantity += `${pizza.quantity}`;
+    });
+
+    this.setState({report, quantity});
   }
 
 // Interface Code
@@ -109,6 +129,7 @@ class App extends Component{
                 <button onClick={this.handleResetAll} className='btn btn-warning me-2'>Reset</button>
 
                 <button onClick={this.handleShowOrder} className="btn btn-primary w-100">Conferma</button>
+                
               </div>
               
             </div>
@@ -139,6 +160,14 @@ class App extends Component{
 
             </div>
           </div>
+          
+
+          <div className="reportPizzas">
+                  {this.state.report && this.state.quantity &&(
+                    <h3>{this.state.report} {this.state.quantity}</h3>
+                    
+                  )}
+                </div>
         </main>
       </>
       
