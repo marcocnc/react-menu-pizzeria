@@ -52,6 +52,24 @@ class App extends Component{
   }
 
 
+  // Function for decrement quantity of pizzas
+  handleDecrement = card => {
+    
+    const cards = [...this.state.cards];
+
+    const id = cards.indexOf(card);
+    cards[id] = {...card};
+
+    // If counter is > 0, can decrement
+    if (cards[id].quantity > 0) {
+      cards[id].quantity--;
+    }
+
+    
+    this.setState({cards})
+  }
+
+
   // Function for reset counter
   handleReset = card =>{
     const cards = [...this.state.cards];
@@ -90,6 +108,7 @@ class App extends Component{
                 key={card.id}
                 onDelete = {this.handleDelete}
                 onIncrement = {this.handleIncrement}
+                onDecrement = {this.handleDecrement}
                 onReset = {this.handleReset}
                 card = {card}/>
               ))}
