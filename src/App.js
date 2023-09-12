@@ -36,6 +36,7 @@ class App extends Component{
     this.setState({cards});
   }
 
+
   // Function for add quantity of pizzas
   handleIncrement = card => {
     // Copy the original object
@@ -47,16 +48,13 @@ class App extends Component{
 
     // Increment number
     cards[id].quantity++;
-    console.log(cards[id].quantity);
     this.setState({cards})
   }
 
 
   // Function for decrement quantity of pizzas
   handleDecrement = card => {
-    
     const cards = [...this.state.cards];
-
     const id = cards.indexOf(card);
     cards[id] = {...card};
 
@@ -64,8 +62,6 @@ class App extends Component{
     if (cards[id].quantity > 0) {
       cards[id].quantity--;
     }
-
-    
     this.setState({cards})
   }
 
@@ -78,8 +74,23 @@ class App extends Component{
     cards[id].quantity = 0;
     this.setState({cards})
   }
-
   
+  handleResetAll = () => {
+
+    // Remap original array
+    const updatedCards = this.state.cards.map(card =>{
+
+      // Original array
+      const updatedCard = {...card};
+      
+      // Reset to zero all quantities
+      updatedCard.quantity = 0;
+      return updatedCard;
+    })
+  
+   
+    this.setState({ cards: updatedCards });
+  }
 
 // Interface Code
   render(){
@@ -89,8 +100,20 @@ class App extends Component{
   
         <main>
           <div className='container'>
-            <h1>Cosa desideri ordinare?</h1>
+
+            {/* Title and buttons */}
+            <div className='d-flex justify-content-between'>
+              <h1>Cosa desideri ordinare?</h1>
+
+              <div className='buttons d-flex justify-content-center align-items-center'>
+                <button onClick={this.handleResetAll} className='btn btn-warning me-2'>Reset</button>
+
+                <button onClick={this.handleShowOrder} className="btn btn-primary w-100">Conferma</button>
+              </div>
+              
+            </div>
             <hr />
+            
     
             {/* Cards row */}
             <div className='row'>
@@ -113,7 +136,6 @@ class App extends Component{
                 card = {card}/>
               ))}
 
-              <button onClick={this.handleShowOrder} className="btn btn-primary w-100 mt-2 mb-5">Conferma</button>
 
             </div>
           </div>
