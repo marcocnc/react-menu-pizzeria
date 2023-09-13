@@ -94,6 +94,7 @@ class App extends Component{
   }
 
 
+
   // Function for see selected pizzas
   handleShowOrder = () => {
 
@@ -102,14 +103,15 @@ class App extends Component{
     console.warn(selectedPizzas);
 
     let report = 'Pizze: ';
-    let quantity = 'Quantità: '
 
+    // ForEach for filtered array selectedPizzas
     selectedPizzas.forEach((pizza) => {
-      report += `${pizza.pizzaName}`;
-      quantity += `${pizza.quantity}`;
+      
+      // How we visualize the report
+      report += `${pizza.pizzaName} x${pizza.quantity} | `;
     });
 
-    this.setState({report, quantity});
+    this.setState({report});
   }
 
 // Interface Code
@@ -162,12 +164,14 @@ class App extends Component{
           </div>
           
 
-          <div className="reportPizzas">
-                  {this.state.report && this.state.quantity &&(
-                    <h3>{this.state.report} {this.state.quantity}</h3>
-                    
-                  )}
-                </div>
+          {/* Report selected pizzas */}
+          {this.state.report &&(
+            <div className="reportPizzas">
+              <h3>{this.state.report}</h3>
+              
+            </div>
+          )}
+                
         </main>
       </>
       
