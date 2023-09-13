@@ -11,9 +11,9 @@ Attualmente le funzioni presenti sono poche, dato che è in fase di sviluppo:
     <li>L'utente può eliminare una o tutte le pizze dalla lista. </li>
 </ol>
 
-### Da implementare
+### Implementati successivamente
 <ul>
-    <li>Avere un resoconto dell'ordine, con pizze scelte, quantità e prezzo totale, e confermarlo;</li>
-    <li>Azzerare tutti i counter con un solo bottone; <strong>(&checkmark;)</strong></li>
-    <li>Aggiungere bottone per diminuire il counter oltre ad azzerarlo direttamente; <strong>(&checkmark;)</strong></li>
+    <li>Avere un resoconto dell'ordine, con pizze scelte e quantità; (&checkmark;)</li>
+    <li>Azzerare tutti i counter con un solo bottone; (&checkmark;)</li>
+    <li>Aggiungere bottone per diminuire il counter oltre ad azzerarlo direttamente; (&checkmark;)</li>
 </ul>
